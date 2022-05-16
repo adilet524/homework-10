@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="org.example"/>
+
+    <context:property-placeholder location="application.properties"/>
+
+    <bean id="dog" class="org.example.Dog"
+          init-method="animalPlus"
+          destroy-method="animaMinus">
+        <property name="name" value="${dog.name}"/>
+        <property name="breed" value="${dog.breed}"/>
+        <property name="color" value="${dog.color}"/>
+        <property name="age" value="${dog.age}"/>
+    </bean>
+
+    <bean id="horse" class="org.example.Horse" init-method="animalPlus" destroy-method="animaMinus">
+        <property name="name" value="${horse.name}"/>
+        <property name="breed" value="${horse.breed}"/>
+        <property name="color" value="${horse.color}"/>
+        <property name="age" value="${horse.age}"/>
+    </bean>
+
+    <bean id="adilet" class="org.example.Person">
+        <property name="name" value="${adilet.name}"/>
+        <property name="age" value="${adilet.age}"/>
+        <property name="animal" ref="horse"/>
+    </bean>
+
+    <bean id="maksat" class="org.example.Person">
+        <property name="name" value="${maksat.name}"/>
+        <property name="age" value="${maksat.age}"/>
+        <property name="animal" ref="dog"/>
+    </bean>
+</beans>
